@@ -20,7 +20,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./Planetario/Planetario.sln
     - name: Build
-      run: dotnet build --no-restore ./Planetario/Planetario.sln
+      run: dotnet build --no-restore
       working-directory: ./Planetario/
     - name: Test
       run: dotnet test --no-build --verbosity normal
