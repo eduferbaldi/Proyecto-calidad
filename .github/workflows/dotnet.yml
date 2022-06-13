@@ -17,10 +17,20 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore ./Planetario/Planetario.sln
+        
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      
+    - name: Setup Nuget
+      uses: Nuget/setup-nuget@v1.0.5
+      
+    - name: Restore nuget packages
+      run: nuget restore ./Planetario/Planetario.sln
+      
+    - name: Build
+      run: msbuild Planetario.sln /p:Configuration=Release
+      working-directory: ./Planetario/
+      
     - name: Build
       run: dotnet build --no-restore Planetario.sln /p:Configuration=Release
       working-directory: ./Planetario/
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
