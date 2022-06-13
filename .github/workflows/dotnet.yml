@@ -47,5 +47,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"eduferbaldi_Proyecto-calidad" /o:"proyecto-calidad-pi" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          .\msbuild ./Planetario/Planetario.sln
+          msbuild ./Planetario/Planetario.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
