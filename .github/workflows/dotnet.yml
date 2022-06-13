@@ -12,15 +12,15 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore ./Planetario/Planetario.sln
     - name: Build
-      run: dotnet build --no-restore Planetario.sln
+      run: dotnet build --no-restore Planetario.sln /p:Configuration=Release
       working-directory: ./Planetario/
     - name: Test
       run: dotnet test --no-build --verbosity normal
