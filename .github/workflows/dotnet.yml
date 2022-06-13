@@ -30,7 +30,3 @@ jobs:
     - name: Build
       run: msbuild Planetario.sln /p:Configuration=Release
       working-directory: ./Planetario/
-      
-    - name: Build
-      run: dotnet build --no-restore Planetario.sln /p:Configuration=Release
-      working-directory: ./Planetario/
